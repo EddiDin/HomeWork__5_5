@@ -8,7 +8,8 @@ namespace HomeWork__5_5_3
         {
             ShowHeader("Удаление повторяющихся символов");
 
-            string text = "ПППОООГГГООООДДДААА";
+            //string text = "ПППОООГГГООООДДДААА";
+            string text = "Ххххоооорррооошшшиий деееннннь";
             string clearText = RemoveDuplicates(text);
 
             Console.WriteLine("Строка до обработки:");
@@ -19,8 +20,14 @@ namespace HomeWork__5_5_3
             Console.WriteLine("Строка после обработки:");
             Console.WriteLine(clearText);
 
+            Console.ReadKey();
         }
 
+        /// <summary>
+        /// Убирает все повторяющиеся символы в строке
+        /// </summary>
+        /// <param name="text">Строка</param>
+        /// <returns>Строка</returns>
         static string RemoveDuplicates(string text)
         {
             string lowerCaseText = text.ToLower();
@@ -35,6 +42,10 @@ namespace HomeWork__5_5_3
             return resultString;
         }
 
+        /// <summary>
+        /// Вывод заголовка в консоль
+        /// </summary>
+        /// <param name="message">Заголовок</param>
         static void ShowHeader(string message)
         {
             string divider = "----------------------------------------------------";
