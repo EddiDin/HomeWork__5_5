@@ -15,7 +15,7 @@ namespace HomeWork__5_5_1
 
             Console.WriteLine();
 
-            ShowHeader("Сложение матриц");
+            ShowHeader("Сложение и вычитание матриц");
             Console.WriteLine("Создание матрицы 1:");
             int[,] matrix1 = CreateMatrix();
 
@@ -26,7 +26,7 @@ namespace HomeWork__5_5_1
             Console.WriteLine();
             ShowMatrix(matrix1, "Матрица 1:");
             ShowMatrix(matrix2, "Матрица 2:");
-            
+
             Console.WriteLine();
             Console.WriteLine($"Результат сложения матриц:");
             try
@@ -41,13 +41,51 @@ namespace HomeWork__5_5_1
 
 
             Console.WriteLine();
-            ShowHeader("Вычитание матриц");
+            Console.WriteLine($"Результат вычитания матриц:");
+            try
+            {
+                resultMatrix = MatrixSubtraction(matrix1, matrix2);
+                ShowMatrix(resultMatrix);
+            }
+            catch (MatrixException e)
+            {
+                Console.WriteLine($"Ошибка. {e.Message}");
+            }
 
-            //ShowHeader("Умножение матриц");
+
+            Console.WriteLine();
+            ShowHeader("Умножение матрицы на матрицу:");
+
+            Console.WriteLine("Создание матрицы 1:");
+            matrix1 = CreateMatrix();
+
+            Console.WriteLine();
+            Console.WriteLine("Создание матрицы 2:");
+            matrix2 = CreateMatrix();
+
+            Console.WriteLine();
+            ShowMatrix(matrix1, "Матрица 1:");
+            ShowMatrix(matrix2, "Матрица 2:");
+
+            Console.WriteLine();
+            Console.WriteLine($"Матрица после умножения матриц 1 и 2:");
+            try
+            {
+                resultMatrix = MatrixMultiplication(matrix1, matrix2);
+                ShowMatrix(resultMatrix);
+            }
+            catch (MatrixException e)
+            {
+                Console.WriteLine($"Ошибка. {e.Message}");
+            }
 
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Ввод матрицы в консоль
+        /// </summary>
+        /// <returns>Матрица</returns>
         static int[,] CreateMatrix()
         {
             string userInput;
@@ -102,6 +140,10 @@ namespace HomeWork__5_5_1
             return new int[,] { };
         }
 
+        /// <summary>
+        /// Ввод числа в консоль
+        /// </summary>
+        /// <returns>Число</returns>
         static int EnterNumber()
         {
             string userInput;
@@ -130,6 +172,12 @@ namespace HomeWork__5_5_1
             return 0;
         }
 
+        /// <summary>
+        /// Ввод матрицы в консоль
+        /// </summary>
+        /// <param name="rows">Кол-во строк</param>
+        /// <param name="cols">Кол-во столбцов</param>
+        /// <returns>Матрица</returns>
         public static int[,] EnterMatrix(int rows, int cols)
         {
             string userInput;
@@ -282,6 +330,10 @@ namespace HomeWork__5_5_1
             return resultMatrix;
         }
 
+        /// <summary>
+        /// Вывод заголовка в консоль
+        /// </summary>
+        /// <param name="message">Заголовок</param>
         static void ShowHeader(string message)
         {
             string divider = "----------------------------------------------------";
