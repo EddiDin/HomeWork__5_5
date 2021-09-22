@@ -13,9 +13,35 @@ namespace HomeWork__5_5_1
             int[,] resultMatrix = MatrixMultiplication(matrix, number);
             ShowMatrix(resultMatrix, "Матрица после умножения:");
 
-            //ShowHeader("Сложение матриц");
+            Console.WriteLine();
 
-            //ShowHeader("Вычитание матриц");
+            ShowHeader("Сложение матриц");
+            Console.WriteLine("Создание матрицы 1:");
+            int[,] matrix1 = CreateMatrix();
+
+            Console.WriteLine();
+            Console.WriteLine("Создание матрицы 2:");
+            int[,] matrix2 = CreateMatrix();
+
+            Console.WriteLine();
+            ShowMatrix(matrix1, "Матрица 1:");
+            ShowMatrix(matrix2, "Матрица 2:");
+            
+            Console.WriteLine();
+            Console.WriteLine($"Результат сложения матриц:");
+            try
+            {
+                resultMatrix = MatrixAddition(matrix1, matrix2);
+                ShowMatrix(resultMatrix);
+            }
+            catch (MatrixException e)
+            {
+                Console.WriteLine($"Ошибка. {e.Message}");
+            }
+
+
+            Console.WriteLine();
+            ShowHeader("Вычитание матриц");
 
             //ShowHeader("Умножение матриц");
 
