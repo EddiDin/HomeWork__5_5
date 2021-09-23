@@ -219,9 +219,12 @@ namespace HomeWork__5_5_1
         /// <param name="matrix">Матрица</param>
         public static void ShowMatrix(int[,] matrix)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < cols; j++)
                 {
                     Console.Write($"{matrix[i, j]} ");
                 }
@@ -238,9 +241,12 @@ namespace HomeWork__5_5_1
         /// <returns>Матрица</returns>
         public static int[,] MatrixMultiplication(int[,] matrix, int number)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < cols; j++)
                 {
                     matrix[i, j] *= number;
                 }
@@ -264,13 +270,17 @@ namespace HomeWork__5_5_1
 
             int[,] resultMatrix = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
 
-            for (var i = 0; i < matrix1.GetLength(0); i++)
+            int matrix1Rows = matrix1.GetLength(0);
+            int matrix1Cols = matrix1.GetLength(1);
+            int matrix2Cols = matrix2.GetLength(1);
+
+            for (var i = 0; i < matrix1Rows; i++)
             {
-                for (var j = 0; j < matrix2.GetLength(1); j++)
+                for (var j = 0; j < matrix2Cols; j++)
                 {
                     resultMatrix[i, j] = 0;
 
-                    for (var k = 0; k < matrix1.GetLength(1); k++)
+                    for (var k = 0; k < matrix1Cols; k++)
                     {
                         resultMatrix[i, j] += matrix1[i, k] * matrix2[k, j];
                     }
@@ -293,10 +303,13 @@ namespace HomeWork__5_5_1
                 throw new MatrixException("Складывать можно только одинаковые по размеру матрицы.");
             }
 
-            int[,] resultMatrix = new int[matrix1.GetLength(0), matrix1.GetLength(1)];
-            for (int i = 0; i < resultMatrix.GetLength(0); i++)
+            int rows = matrix1.GetLength(0);
+            int cols = matrix1.GetLength(1);
+
+            int[,] resultMatrix = new int[rows, cols];
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < resultMatrix.GetLength(1); j++)
+                for (int j = 0; j < cols; j++)
                 {
                     resultMatrix[i, j] = matrix1[i, j] + matrix2[i, j];
                 }
@@ -318,10 +331,13 @@ namespace HomeWork__5_5_1
                 throw new MatrixException("Вычитать можно только одинаковые по размеру матрицы.");
             }
 
-            int[,] resultMatrix = new int[matrix1.GetLength(0), matrix1.GetLength(1)];
-            for (int i = 0; i < resultMatrix.GetLength(0); i++)
+            int rows = matrix1.GetLength(0);
+            int cols = matrix1.GetLength(1);
+
+            int[,] resultMatrix = new int[rows, cols];
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < resultMatrix.GetLength(1); j++)
+                for (int j = 0; j < cols; j++)
                 {
                     resultMatrix[i, j] = matrix1[i, j] - matrix2[i, j];
                 }
