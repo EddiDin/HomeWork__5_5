@@ -57,19 +57,22 @@ namespace HomeWork__5_5_4
         {
             if (args.Length < 3) return "Невозможно определить является ли последовательность прогрессией. Слишком мало чисел.";
 
-            int divider = args[1] / args[0];
-            bool isGeometry = true;
-            for (int i = 0; i < args.Length; i++)
+            if (!Array.Exists(args, element => element == 0))
             {
-                if (i == 0 || i == 1) continue;
-                if (args[i] / divider != args[i - 1])
+                int divider = args[1] / args[0];
+                bool isGeometry = true;
+                for (int i = 0; i < args.Length; i++)
                 {
-                    isGeometry = false;
-                    break;
+                    if (i == 0 || i == 1) continue;
+                    if (args[i] / divider != args[i - 1])
+                    {
+                        isGeometry = false;
+                        break;
+                    }
                 }
-            }
 
-            if (isGeometry) return "Введенная последовательноть является геометрической.";
+                if (isGeometry) return "Введенная последовательноть является геометрической.";
+            }
 
             int difference = args[1] - args[0];
             bool isArithmetic = true;
