@@ -52,18 +52,32 @@ namespace HomeWork__5_5_5
             }
         }
 
-        static int AckermanStack(int m, int n) {
+        /// <summary>
+        /// Функция Аккермана (стек)
+        /// </summary>
+        /// <param name="m">Число</param>
+        /// <param name="n">Число</param>
+        /// <returns>Число</returns>
+        static int AckermanStack(int m, int n)
+        {
             Stack<int> stack = new Stack<int>();
             stack.Push(m);
             while (stack.Count != 0)
             {
                 m = stack.Pop();
-                if (m == 0 || n == 0)
-                    n += m + 1;
+                if (m == 0)
+                {
+                    n++;
+                }
+                else if (n == 0)
+                {
+                    stack.Push(m - 1);
+                    n = 1;
+                }
                 else
                 {
-                    stack.Push(--m);
-                    stack.Push(++m);
+                    stack.Push(m - 1);
+                    stack.Push(m);
                     n--;
                 }
             }
